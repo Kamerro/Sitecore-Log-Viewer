@@ -36,12 +36,12 @@ namespace LogViewer
             throw new NotImplementedException();
         }
 
-        public List<KeyValuePair<string,string>> ReturnPairedConfigurations(ConstantValues.InternalConfiguration.FileTypes fileType, bool LazyLoad)
+        public WindowSettings ReturnPairedConfigurations(ConstantValues.InternalConfiguration.FileTypes fileType, bool LazyLoad)
         {
 
-            List<KeyValuePair<string,string>> keyValuePairs = new List<KeyValuePair<string,string>>();
-            keyValuePairs = _readTheXmlFile.ReadWindowProperties();
-            return keyValuePairs;
+            WindowSettings settings = new WindowSettings();
+            settings = _readTheXmlFile.ReadWindowProperties();
+            return settings;
 
         }
     }

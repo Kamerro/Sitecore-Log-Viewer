@@ -1,28 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace LogViewer
 {
-    internal class ReadTheXmlFile:IInternalXMLFileReader
+    internal class ReadTheXmlFile : IInternalXMLFileReader
     {
-        private List<KeyValuePair<string, string>> _keyValuePairs;
 
-        public List<KeyValuePair<string, string>> ReadWindowProperties()
+        public WindowSettings ReadWindowProperties()
         {
-            string filePath = ConstantValues.InternalConfiguration.WindowConfigLocalization;
-            XDocument doc = XDocument.Load(filePath);
-            foreach (XElement element in doc.Descendants())
+            WindowSettings settings;
+            using (TextReader reader = new StreamReader(ConstantValues.InternalConfiguration.WindowConfigLocalization))
             {
-
-                var obj = element.Attributes().ToList();
-                KeyValuePair<string, string> XElem = new KeyValuePair<string, string>(obj[0].Value, obj[1].Value);
-                _keyValuePairs.Add(XElem);
+                XmlSerializer ser = new XmlSerializer(typeof(WindowSettings));
+                settings = (WindowSettings)ser.Deserialize(reader);
             }
-
-            return _keyValuePairs;
-
+            return settings;
         }
     }
 }

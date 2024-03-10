@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static LogViewer.ConstantValues.InternalConfiguration;
 
 namespace LogViewer
 {
     public static class ConstantValues
     {
+        public static WindowSettings ConfigureWindowParameters =
+                          ConfigurationManager.TakeConfigurationManager()
+                          .ReturnPairedConfigurations(FileTypes.txt, false);
         public struct InternalConfiguration
         {
-            internal static List<KeyValuePair<string,string>> ConfigureWindowParameters = 
-                            ConfigurationManager.TakeConfigurationManager()
-                            .ReturnPairedConfigurations(FileTypes.txt, false);
-            internal static string WindowConfigLocalization = $@"{AppDomain.CurrentDomain.BaseDirectory}WindowConfiguration.xml";
+
+          
+            public static string WindowConfigLocalization = AppDomain.CurrentDomain.BaseDirectory.ToString() + "WindowConfiguration.xml";
+            public const string LocalLogFolderLocalization= @"C:\LogFileExample";
+            public const string LogFilterType = "txt files (*.txt)|*.txt";
 
             public enum FileTypes
             {

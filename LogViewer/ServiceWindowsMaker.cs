@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LogViewer
 {
@@ -12,6 +13,14 @@ namespace LogViewer
         public bool InvokeNewWindow(string file, ConstantValues.StateMachine.TheStateOfTheSoftware state)
         {
             throw new NotImplementedException();
+        }
+
+        internal bool SetPropertiesOfTheWindow(WindowSettings parameters)
+        {
+            LogView view = new LogView(parameters);
+            view.Show();
+            return true;
+
         }
     }
 }
