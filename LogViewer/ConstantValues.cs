@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace LogViewer
 {
-    public static class Const
+    public static class ConstantValues
     {
         public struct InternalConfiguration
         {
+            internal static List<KeyValuePair<string,string>> ConfigureWindowParameters = 
+                            ConfigurationManager.TakeConfigurationManager()
+                            .ReturnPairedConfigurations(FileTypes.txt, false);
+            internal static string WindowConfigLocalization = $@"{AppDomain.CurrentDomain.BaseDirectory}WindowConfiguration.xml";
+
             public enum FileTypes
             {
                 txt = 1,
@@ -26,7 +31,6 @@ namespace LogViewer
                 ClosingApplication = 8
             }
         }
-     
         public static StateMachine.TheStateOfTheSoftware stateOfTheMachine = StateMachine.TheStateOfTheSoftware.Initial;
     }
 }

@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static LogViewer.Const;
+using static LogViewer.ConstantValues;
 
 namespace LogViewer
 {
-    public delegate bool StateMachineDelegate(string file, TheStateOfTheSoftware state);
-    public delegate bool ConfigDelegate(string[] parameters);
+    public delegate bool StateMachineDelegate(string file, ConstantValues.StateMachine.TheStateOfTheSoftware state);
+    public delegate bool ConfigDelegate(List<KeyValuePair<string,string>> parameters);
     public partial class Form1 : Form
     {
         public event StateMachineDelegate ChangeStateOfMachineEvent;
@@ -21,7 +21,7 @@ namespace LogViewer
         public Form1()
         {
             InitializeComponent();
-            ConfigurationManager.InitialConfigurationReadInternalConfig();
+         //   ConfigurationManager.InitialConfigurationReadInternalConfig();
             ServiceWindowsMaker maker  = new ServiceWindowsMaker();
             ChangeStateOfMachineEvent += maker.InvokeNewWindow;
             ChangeStateOfMachineEvent += maker.CreateNewWindow;
@@ -39,8 +39,8 @@ namespace LogViewer
                 using (StreamReader reader = new StreamReader(openFile))
                 {
                     var fileContent = reader.ReadToEnd();
-                    ChangeStateOfMachineEvent.Invoke(fileContent,TheStateOfTheSoftware.LoadedFile);
-                    OpenConfigWindowEvent.Invoke(Const.ConfigureWindowParameters);
+                    ChangeStateOfMachineEvent.Invoke(fileContent,ConstantValues.StateMachine.TheStateOfTheSoftware.LoadedFile);
+                    OpenConfigWindowEvent.Invoke(ConstantValues.InternalConfiguration.ConfigureWindowParameters);
 
                 }
             }
