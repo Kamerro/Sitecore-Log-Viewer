@@ -43,6 +43,16 @@ namespace LogViewer
                     var fileContent = reader.ReadToEnd();
                     //ChangeStateAndWindowHandler.Invoke(fileContent,ConstantValues.StateMachine.TheStateOfTheSoftware.LoadedFile);
                     ServiceLogChecker.CheckParametersOfTheProvidedLog(fileContent);
+                    ServiceLogChecker.SplitLogIntoPieces(fileContent);
+                    LogViewerBox.AppendText("Number of lines: " + ServiceLogChecker.NumberOfTheLines.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of infos: " + ServiceLogChecker.NumberOfInfos.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of warns: " + ServiceLogChecker.NumberOfWarns.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of errors: " + ServiceLogChecker.NumberOfErrors.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of Solr errors: " + ServiceLogChecker.NumberOfSolrErrors.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of Solr warns: " + ServiceLogChecker.NumberOfSolrWarns.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of DI warns: " + ServiceLogChecker.NumberOfDIWarnings.ToString() + "\r\n");
+                    LogViewerBox.AppendText(fileContent);
+
                 }
 
             }
