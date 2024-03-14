@@ -26,8 +26,8 @@ namespace LogViewer
               OpenConfigWindowEvent += maker.SetPropertiesOfTheWindow;
            // ChangeStateAndWindowHandler += maker.InvokeNewWindow;
           //  ChangeStateAndWindowHandler += maker.CreateNewWindow;
-          //sdsfdf
-          //sfsddsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          //sdsfdfghfhgfhf
+          //sfsdds
         }
         private void LoadLog_Click(object sender, EventArgs e)
         {
