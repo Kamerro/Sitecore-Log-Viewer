@@ -53,6 +53,11 @@ namespace LogViewer
             return listOfLogs;
         }
 
+        public List<string> SaveOnlySpecialType(string[] strings, List<string> listOfLogs)
+        {
+            return listOfLogs.Where(x => strings.All(str => x.Contains(str))).ToList();
+        }
+
         private List<string> MakeListOfLogs(string[] splitedContent)
         {
             StringBuilder sb = new StringBuilder();
