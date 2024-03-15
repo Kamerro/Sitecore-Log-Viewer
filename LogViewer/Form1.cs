@@ -44,17 +44,14 @@ namespace LogViewer
                     LogService logSplitter = new LogService();
                     var fileContent = reader.ReadToEnd();
                     //ChangeStateAndWindowHandler.Invoke(fileContent,ConstantValues.StateMachine.TheStateOfTheSoftware.LoadedFile);
-                    logSplitter.CheckParametersOfTheProvidedLog(fileContent);
                     List<string> list = logSplitter.SplitLogIntoPieces(fileContent);
-                    LogViewerBox.AppendText("Number of lines: " + logSplitter.NumberOfTheLines.ToString() + "\r\n");
+                    logSplitter.CheckParametersOfTheProvidedLog(list.ToArray<string>());
                     LogViewerBox.AppendText("Number of infos: " + logSplitter.NumberOfInfos.ToString() + "\r\n");
-                    LogViewerBox.AppendText("Number of warns: " + logSplitter.NumberOfWarns.ToString() + "\r\n");
-                    LogViewerBox.AppendText("Number of errors: " + logSplitter.NumberOfErrors.ToString() + "\r\n");
-                    LogViewerBox.AppendText("Number of Solr errors: " + logSplitter.NumberOfSolrErrors.ToString() + "\r\n");
-                    LogViewerBox.AppendText("Number of Solr warns: " + logSplitter.NumberOfSolrWarns.ToString() + "\r\n");
-                    LogViewerBox.AppendText("Number of DI warns: " + logSplitter.NumberOfDIWarnings.ToString() + "\r\n");
-                    LogViewerBox.AppendText("Number of usefull logs: " + list.Count + "\r\n");
-                    LogViewerBox.AppendText(fileContent);
+                    LogViewerBox.AppendText("Number of warns in solr: " + logSplitter.NumberOfSolrWarns.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of errors in solr: " + logSplitter.NumberOfSolrErrors.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of usefull logs: " + logSplitter.NumberOfTheLines+ "\r\n");
+
+                        //LogViewerBox.AppendText(list.Where(x => x.ToLower().Contains("warn") && x.ToLower().Contains("solr")).First());
 
                 }
             }
