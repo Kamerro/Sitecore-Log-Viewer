@@ -45,14 +45,17 @@ namespace LogViewer
                     var fileContent = reader.ReadToEnd();
                     //ChangeStateAndWindowHandler.Invoke(fileContent,ConstantValues.StateMachine.TheStateOfTheSoftware.LoadedFile);
                     List<string> list = logSplitter.SplitLogIntoPieces(fileContent);
-                    logSplitter.CheckParametersOfTheProvidedLog(list.ToArray<string>());
                     LogViewerBox.AppendText("Number of infos: " + logSplitter.NumberOfInfos.ToString() + "\r\n");
-                    LogViewerBox.AppendText("Number of warns in solr: " + logSplitter.NumberOfSolrWarns.ToString() + "\r\n");
-                    LogViewerBox.AppendText("Number of errors in solr: " + logSplitter.NumberOfSolrErrors.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of warns: " + logSplitter.NumberOfWarns.ToString() + "\r\n");
+                    LogViewerBox.AppendText("Number of errors: " + logSplitter.NumberOfErrors.ToString() + "\r\n");
                     LogViewerBox.AppendText("Number of usefull logs: " + logSplitter.NumberOfTheLines+ "\r\n");
+                    LogViewerBox.AppendText("Number of mixed logs: " + logSplitter.NumberOfMixedErrors + "\r\n");
 
-                        //LogViewerBox.AppendText(list.Where(x => x.ToLower().Contains("warn") && x.ToLower().Contains("solr")).First());
-
+                    //LogViewerBox.AppendText(list.Where(x => x.ToLower().Contains("error") && x.ToLower().Contains("solr")).First());
+                    foreach (var line in list)
+                    {
+                        LogViewerBox.AppendText(line + "\r");
+                    }
                 }
             }
             OpenConfigWindowEvent.Invoke(ConstantValues.ConfigureWindowParameters);

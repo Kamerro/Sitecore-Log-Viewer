@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Lifetime;
 using System.Text;
 
 namespace LogViewer
@@ -14,7 +15,7 @@ namespace LogViewer
         public int NumberOfWarns;
         public int NumberOfInfos;
         public int NumberOfDIWarnings;
-
+        public int NumberOfMixedErrors;
 
         public void CheckParametersOfTheProvidedLog(string fileContent)
         {
@@ -27,6 +28,9 @@ namespace LogViewer
             NumberOfSolrErrors = splitedContent.Count(x => x.ToLower().Contains("error") && x.ToLower().Contains("solr"));
             NumberOfSolrWarns = splitedContent.Count(x => x.ToLower().Contains("warn") && x.ToLower().Contains("solr"));
             NumberOfDIWarnings = splitedContent.Count(x => x.ToLower().Contains("warn") && x.ToLower().Contains("constructor"));
+            NumberOfMixedErrors = splitedContent.Count(x => x.ToLower().Contains("warn") && x.ToLower().Contains("error"));
+            NumberOfMixedErrors += splitedContent.Count(x => x.ToLower().Contains("info") && x.ToLower().Contains("error"));
+            NumberOfMixedErrors += splitedContent.Count(x => x.ToLower().Contains("info") && x.ToLower().Contains("warn"));
         }
         public void CheckParametersOfTheProvidedLog(string[] splitedContent)
         {
@@ -41,13 +45,18 @@ namespace LogViewer
 
         public List<string> SplitLogIntoPieces(string fileContent)
         {
-            StringBuilder sb = new StringBuilder();
             string[] splitedContent = fileContent.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
-            string singleLog = String.Empty;
-            int beforeExclude = splitedContent.Where(x=>!String.IsNullOrEmpty(x)).Count();
-            List<string> listOfLogs = new List<string>();
+            var listOfLogs = MakeListOfLogs(splitedContent);
             //FilterLinesWithExclude(splitedContent, exclude: "Commonly Used Types");
-            int afterExclude = splitedContent.Where(x => !String.IsNullOrEmpty(x)).Count();
+            listOfLogs = ExcludeNotUsefullLogs(listOfLogs);
+            CheckParametersOfTheProvidedLog(listOfLogs.ToArray());
+            return listOfLogs;
+        }
+
+        private List<string> MakeListOfLogs(string[] splitedContent)
+        {
+            StringBuilder sb = new StringBuilder();
+            List<string> listOfLogs = new List<string>();
             foreach (string str in splitedContent)
             {
                 if ((str.Length >= 3 && int.TryParse(str.Substring(0, 2), out int s) || str.IndexOf("ManagedPoolThread") == 0) && !String.IsNullOrEmpty(sb.ToString()))
@@ -62,14 +71,16 @@ namespace LogViewer
                 }
             }
             listOfLogs.Add(sb.ToString());
-
-
-            listOfLogs = listOfLogs.Where(
-                str => ((str.Contains("ERROR"))
-                || (str.Contains("WARN") && !str.Contains("ManagedPoolThread"))
-                || str.Contains("INFO") && !str.Contains("ManagedPoolThread"))).ToList();
-
             return listOfLogs;
+        }
+
+        private List<string> ExcludeNotUsefullLogs(List<string> listOfLogs)
+        {
+            return listOfLogs?.Where(
+                 str => ((str.Contains("ERROR"))
+                 || (str.Contains("WARN") && !str.Contains("ManagedPoolThread"))
+                 //|| str.Contains("INFO") && !str.Contains("ManagedPoolThread"))
+                 )).ToList();
         }
 
         private void FilterLinesWithExclude(string[] splitedContent, string exclude)
