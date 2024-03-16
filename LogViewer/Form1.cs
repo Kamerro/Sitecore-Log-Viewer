@@ -46,18 +46,26 @@ namespace LogViewer
                     //ChangeStateAndWindowHandler.Invoke(fileContent,ConstantValues.StateMachine.TheStateOfTheSoftware.LoadedFile);
                     List<string> list = logSplitter.SplitLogIntoPieces(fileContent);
                     List<string> listErrorSolr = logSplitter.SaveOnlySpecialType(new string[] { "error", "solr" }, list);
+                    List<string> listErrorUnicorn = logSplitter.SaveOnlySpecialType(new string[] { "error", "unicorn" }, list);
+                    List<string> listWarnUnicorn = logSplitter.SaveOnlySpecialType(new string[] { "warn", "unicorn" }, list);
+
                     List<string> listWarningsSolr = logSplitter.SaveOnlySpecialType(new string[] { "warn", "solr" }, list);
+                    List<string> listOfOtherWarns = logSplitter.WithExcluding(new string[] { "sql", "solr","error" }, list);
                     List<string> listSQL = logSplitter.SaveOnlySpecialType(new string[] { "sql" }, list);
+                    LogViewerBox.AppendText("Number of other warns " + listOfOtherWarns.Count + "\r\n");
 
                     LogViewerBox.AppendText("Number of errors from solr: " + listErrorSolr.Count + "\r\n");
                     LogViewerBox.AppendText("Number of warns from solr: " + listWarningsSolr.Count + "\r\n");
                     LogViewerBox.AppendText("Number of SQL logs: " + listSQL.Count + "\r\n");
+                    LogViewerBox.AppendText("Number of Unicorn warns: " + listWarnUnicorn.Count + "\r\n");
+                    LogViewerBox.AppendText("Number of Unicorn errors: " + listErrorUnicorn.Count + "\r\n");
+
 
                     //LogViewerBox.AppendText(list.Where(x => x.ToLower().Contains("error") && x.ToLower().Contains("solr")).First());
-                    //foreach (var line in list)
-                    //{
-                    //    LogViewerBox.AppendText(line + "\r");
-                    //}
+                    foreach (var line in listOfOtherWarns)
+                    {
+                        LogViewerBox.AppendText(line + "\r");
+                    }
                 }
             }
             OpenConfigWindowEvent.Invoke(ConstantValues.ConfigureWindowParameters);

@@ -55,7 +55,7 @@ namespace LogViewer
 
         public List<string> SaveOnlySpecialType(string[] strings, List<string> listOfLogs)
         {
-            return listOfLogs.Where(x => strings.All(str => x.Contains(str))).ToList();
+            return listOfLogs.Where(x => strings.All(str => x.ToLower().Contains(str.ToLower()))).ToList();
         }
 
         private List<string> MakeListOfLogs(string[] splitedContent)
@@ -106,6 +106,21 @@ namespace LogViewer
 
                 i++;
             }
+        }
+
+        internal List<string> WithExcluding(string[] strings, List<string> list)
+        {
+            //foreach(string str in list)
+            //{
+            //    foreach(string exclude in strings)
+            //    {
+            //        if (str.ToLower().Contains(exclude))
+            //        {
+
+            //        }
+            //    }
+            //}
+            return list.Where(x => strings.All(str => !x.ToLower().Contains(str.ToLower()))).ToList();
         }
     }
 }
