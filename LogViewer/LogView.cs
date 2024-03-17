@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogViewer.Solr;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,37 @@ namespace LogViewer
                 }
 
             }
+        }
+
+        private void SqlLogButton_Click(object sender, EventArgs e)
+        {
+            Placeholder.ListSQL.ForEach(x => {logViewBox.AppendText(x.ToString() + "\r\n");});
+        }
+
+        private void OtherLogButton_Click(object sender, EventArgs e)
+        {
+            Placeholder.ListOfOtherWarns.ForEach(x => { logViewBox.AppendText(x.ToString() + "\r\n"); });
+        }
+
+        private void SolrLogButton_Click(object sender, EventArgs e)
+        {
+            logViewBox.Clear();
+            solrConfig solrConfig = new solrConfig();
+            solrConfig.ShowDialog();
+
+            if (SolrConfigurations.Warns)
+                Placeholder.ListWarningsSolr.Where(
+                    x=>x.Contains(SolrConfigurations.Sentence1) 
+                 && x.Contains(SolrConfigurations.Sentence2))
+                    .ToList().ForEach(x => logViewBox.AppendText(x.ToString() + "\r\n"));
+
+            if (SolrConfigurations.Errors)
+                Placeholder.ListErrorSolr.Where(
+                  x => x.Contains(SolrConfigurations.Sentence1)
+               && x.Contains(SolrConfigurations.Sentence2))
+                  .ToList().ForEach(x => logViewBox.AppendText(x.ToString() + "\r\n"));
+
+
         }
     }
 }

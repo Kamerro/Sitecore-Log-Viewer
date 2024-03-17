@@ -34,19 +34,21 @@
             // 
             // LoadLog
             // 
+            this.LoadLog.BackColor = System.Drawing.SystemColors.Highlight;
+            this.LoadLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.LoadLog.Location = new System.Drawing.Point(13, 13);
             this.LoadLog.Name = "LoadLog";
             this.LoadLog.Size = new System.Drawing.Size(775, 121);
             this.LoadLog.TabIndex = 0;
-            this.LoadLog.Text = "Choose the file";
-            this.LoadLog.UseVisualStyleBackColor = true;
+            this.LoadLog.Text = "Choose the log file";
+            this.LoadLog.UseVisualStyleBackColor = false;
             this.LoadLog.Click += new System.EventHandler(this.LoadLog_Click);
             // 
             // LogViewerBox
             // 
-            this.LogViewerBox.Location = new System.Drawing.Point(13, 141);
+            this.LogViewerBox.Location = new System.Drawing.Point(272, 140);
             this.LogViewerBox.Name = "LogViewerBox";
-            this.LogViewerBox.Size = new System.Drawing.Size(775, 283);
+            this.LogViewerBox.Size = new System.Drawing.Size(244, 283);
             this.LogViewerBox.TabIndex = 1;
             this.LogViewerBox.Text = "";
             // 
