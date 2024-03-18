@@ -46,21 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManagementConfigs\ConfigurationManager.cs" />
+    <Compile Include="Configurations\ConfigurationManager.cs" />
     <Compile Include="Consts\ConstantValues.cs" />
-    <Compile Include="MainViewApplication\BaseForm.cs">
+    <Compile Include="Views\MainViewApplication\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainViewApplication\BaseForm.Designer.cs">
+    <Compile Include="Views\MainViewApplication\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IConfugurationManager.cs" />
     <Compile Include="Interfaces\IInternalXMLFileReader.cs" />
     <Compile Include="Interfaces\IInternalListValidator.cs" />
-    <Compile Include="LogViewWindow\LogView.cs">
+    <Compile Include="Views\LogViewWindow\LogView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogViewWindow\LogView.Designer.cs">
+    <Compile Include="Views\LogViewWindow\LogView.Designer.cs">
       <DependentUpon>LogView.cs</DependentUpon>
     </Compile>
     <Compile Include="Lists\Placeholder.cs" />
@@ -70,33 +70,33 @@
     <Compile Include="Services\LogService.cs" />
     <Compile Include="Services\ServiceLogData.cs" />
     <Compile Include="Services\ServiceWindowsMaker.cs" />
-    <Compile Include="Solr\solrConfig.cs">
+    <Compile Include="Views\Solr\solrConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Solr\solrConfig.Designer.cs">
+    <Compile Include="Views\Solr\solrConfig.Designer.cs">
       <DependentUpon>solrConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Solr\SolrConfigurations.cs" />
-    <Compile Include="Sql\SqlConfigurations.cs" />
-    <Compile Include="Sql\SqlForm.cs">
+    <Compile Include="Configurations\SolrConfigurations.cs" />
+    <Compile Include="Configurations\SqlConfigurations.cs" />
+    <Compile Include="Views\Sql\SqlForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sql\SqlForm.Designer.cs">
+    <Compile Include="Views\Sql\SqlForm.Designer.cs">
       <DependentUpon>SqlForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unicorn\UnicornConfigurations.cs" />
-    <Compile Include="Unicorn\UnicornForm.cs">
+    <Compile Include="Configurations\UnicornConfigurations.cs" />
+    <Compile Include="Views\Unicorn\UnicornForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Unicorn\UnicornForm.Designer.cs">
+    <Compile Include="Views\Unicorn\UnicornForm.Designer.cs">
       <DependentUpon>UnicornForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings\WindowProperties.cs" />
     <Compile Include="Settings\WindowSettings.cs" />
-    <EmbeddedResource Include="MainViewApplication\BaseForm.resx">
+    <EmbeddedResource Include="Views\MainViewApplication\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogViewWindow\LogView.resx">
+    <EmbeddedResource Include="Views\LogViewWindow\LogView.resx">
       <DependentUpon>LogView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -108,13 +108,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Solr\solrConfig.resx">
+    <EmbeddedResource Include="Views\Solr\solrConfig.resx">
       <DependentUpon>solrConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sql\SqlForm.resx">
+    <EmbeddedResource Include="Views\Sql\SqlForm.resx">
       <DependentUpon>SqlForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Unicorn\UnicornForm.resx">
+    <EmbeddedResource Include="Views\Unicorn\UnicornForm.resx">
       <DependentUpon>UnicornForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
