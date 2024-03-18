@@ -69,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadTheXmlFile.cs" />
     <Compile Include="LogService.cs" />
+    <Compile Include="ServiceLogData.cs" />
     <Compile Include="ServiceWindowsMaker.cs" />
     <Compile Include="Solr\solrConfig.cs">
       <SubType>Form</SubType>
@@ -77,7 +78,7 @@
       <DependentUpon>solrConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Solr\SolrConfigurations.cs" />
-    <Compile Include="Sql\UnicornConfigurations.cs" />
+    <Compile Include="Sql\SqlConfigurations.cs" />
     <Compile Include="Sql\SqlForm.cs">
       <SubType>Form</SubType>
     </Compile>
