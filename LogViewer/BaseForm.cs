@@ -15,11 +15,11 @@ namespace LogViewer
 {
     public delegate bool StateMachineWindow(string file, ConstantValues.StateMachine.TheStateOfTheSoftware state);
     public delegate bool ConfigDelegate(WindowSettings parameters);
-    public partial class Form1 : Form
+    public partial class BaseForm : Form
     {
         public event StateMachineWindow ChangeStateAndWindowHandler;
         public event ConfigDelegate OpenConfigWindowEvent;
-        public Form1()
+        public BaseForm()
         {
             InitializeComponent();
             ServiceWindowsMaker maker = new ServiceWindowsMaker();

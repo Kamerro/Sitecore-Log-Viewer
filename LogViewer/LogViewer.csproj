@@ -49,11 +49,11 @@
     <Compile Include="ConfigurationManager.cs" />
     <Compile Include="ConstantValues.cs" />
     <Compile Include="CustomAttribute.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IConfugurationManager.cs" />
     <Compile Include="IInternalXMLFileReader.cs" />
@@ -77,10 +77,24 @@
       <DependentUpon>solrConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Solr\SolrConfigurations.cs" />
+    <Compile Include="Sql\UnicornConfigurations.cs" />
+    <Compile Include="Sql\SqlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sql\SqlForm.Designer.cs">
+      <DependentUpon>SqlForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Unicorn\UnicornConfigurations.cs" />
+    <Compile Include="Unicorn\UnicornForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Unicorn\UnicornForm.Designer.cs">
+      <DependentUpon>UnicornForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowProperties.cs" />
     <Compile Include="WindowSettings.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogView.resx">
       <DependentUpon>LogView.cs</DependentUpon>
@@ -97,6 +111,12 @@
     <EmbeddedResource Include="Solr\solrConfig.resx">
       <DependentUpon>solrConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sql\SqlForm.resx">
+      <DependentUpon>SqlForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Unicorn\UnicornForm.resx">
+      <DependentUpon>UnicornForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -110,9 +130,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sql\" />
-    <Folder Include="Unicorn\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

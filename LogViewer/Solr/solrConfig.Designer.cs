@@ -121,6 +121,7 @@
             this.Controls.Add(this.checkBoxAcceptWarns);
             this.Controls.Add(this.AcceptCOnfigurationButton);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "solrConfig";
             this.Text = "solrConfig";
             this.ResumeLayout(false);
