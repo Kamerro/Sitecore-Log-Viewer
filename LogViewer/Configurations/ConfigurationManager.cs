@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace LogViewer
 {
-    public class ConfigurationManager : IInternalListValidator
+    public class ConfigurationManager
     {
         private static ConfigurationManager configurationManager = null;
         private ReadTheXmlFile _readTheXmlFile;
@@ -25,15 +25,6 @@ namespace LogViewer
             return configurationManager;
 
 
-        }
-        public static void InitialConfigurationReadInternalConfig()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsValidStringList(List<string> value)
-        {
-            throw new NotImplementedException();
         }
 
         public WindowSettings ReturnPairedConfigurations(ConstantValues.InternalConfiguration.FileTypes fileType, bool LazyLoad)

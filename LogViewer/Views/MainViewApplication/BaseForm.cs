@@ -41,6 +41,7 @@ namespace LogViewer
                 {
                     fileContent = reader.ReadToEnd();
                 }
+
                 GenerateListsOfLogs(fileContent, logSplitter);
             }
             OpenConfigWindowEvent.Invoke(ConstantValues.ConfigureWindowParameters);

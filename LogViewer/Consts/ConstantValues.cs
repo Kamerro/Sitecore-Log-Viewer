@@ -16,8 +16,8 @@ namespace LogViewer
         {
 
           
-            public static string WindowConfigLocalization = AppDomain.CurrentDomain.BaseDirectory.ToString() + "WindowConfiguration.xml";
-            public const string LocalLogFolderLocalization= @"C:\LogFileExample";
+            public static string WindowConfigLocalization = $"{AppDomain.CurrentDomain.BaseDirectory.ToString()}../../SampleData/WindowConfiguration.xml";
+            public static string LocalLogFolderLocalization = $"{AppDomain.CurrentDomain.BaseDirectory.ToString()}../../SampleData/";
             public const string LogFilterType = "txt files (*.txt)|*.txt";
 
             public enum FileTypes
