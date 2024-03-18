@@ -107,7 +107,7 @@
             this.AcceptCOnfigurationButton.UseVisualStyleBackColor = false;
             this.AcceptCOnfigurationButton.Click += new System.EventHandler(this.AcceptCOnfigurationButton_Click);
             // 
-            // UnicornForm
+            // SqlForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,8 +121,8 @@
             this.Controls.Add(this.checkBoxAcceptWarns);
             this.Controls.Add(this.AcceptCOnfigurationButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "UnicornForm";
-            this.Text = "UnicornForm";
+            this.Name = "SqlForm";
+            this.Text = "SqlForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
