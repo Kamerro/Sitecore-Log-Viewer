@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogViewer.Unicorn;
+using LogViewer.Sql;
 namespace LogViewer
 {
     public partial class LogView : Form
@@ -36,7 +37,23 @@ namespace LogViewer
 
         private void SqlLogButton_Click(object sender, EventArgs e)
         {
-            Placeholder.ListSQL.ForEach(x => {logViewBox.AppendText(x.ToString() + "\r\n");});
+            logViewBox.Clear();
+            SqlForm sqlConfig = new SqlForm();
+            sqlConfig.ShowDialog();
+
+            if (SqlConfigurations.Warns)
+                Placeholder.ListWarningsSql.Where(
+                    x => x.Contains(SqlConfigurations.Sentence1)
+                    && x.Contains(SqlConfigurations.Sentence2))
+                    .ToList()
+                    .ForEach(x => logViewBox.AppendText(x.ToString() + "\r\n"));
+
+            if (SqlConfigurations.Errors)
+                Placeholder.ListErrorsSql.Where(
+                  x => x.Contains(SqlConfigurations.Sentence1)
+               && x.Contains(SqlConfigurations.Sentence2))
+                  .ToList()
+                  .ForEach(x => logViewBox.AppendText(x.ToString() + "\r\n"));
         }
 
         private void OtherLogButton_Click(object sender, EventArgs e)
@@ -59,7 +76,7 @@ namespace LogViewer
                     .ForEach(x => logViewBox.AppendText(x.ToString() + "\r\n"));
 
             if (SolrConfigurations.Errors)
-                Placeholder.ListErrorSolr.Where(
+                Placeholder.ListErrorsSolr.Where(
                   x => x.Contains(SolrConfigurations.Sentence1)
                && x.Contains(SolrConfigurations.Sentence2))
                   .ToList()
@@ -71,17 +88,17 @@ namespace LogViewer
         private void UnicornLogButton_Click(object sender, EventArgs e)
         {
             logViewBox.Clear();
-            SqlForm unicornForm = new UnicornForm();
+            UnicornForm unicornForm = new UnicornForm();
             unicornForm.ShowDialog();
 
             if (UnicornConfigurations.Warns)
-                Placeholder.ListWarnUnicorn.Where(
+                Placeholder.ListWarningsUnicorn.Where(
                     x => x.Contains(UnicornConfigurations.Sentence1)
                  && x.Contains(UnicornConfigurations.Sentence2))
                     .ToList().ForEach(x => logViewBox.AppendText(x.ToString() + "\r\n"));
 
             if (UnicornConfigurations.Errors)
-                Placeholder.ListErrorUnicorn.Where(
+                Placeholder.ListErrorsUnicorn.Where(
                   x => x.Contains(UnicornConfigurations.Sentence1)
                && x.Contains(UnicornConfigurations.Sentence2))
                   .ToList().ForEach(x => logViewBox.AppendText(x.ToString() + "\r\n"));
