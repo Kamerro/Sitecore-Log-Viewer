@@ -118,6 +118,7 @@
             this.Controls.Add(this.checkBoxIncludeErrors);
             this.Controls.Add(this.checkBoxAcceptWarns);
             this.Controls.Add(this.AcceptCOnfigurationButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "OtherView";
             this.Text = "OtherView";
             this.ResumeLayout(false);
