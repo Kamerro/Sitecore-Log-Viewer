@@ -1,4 +1,5 @@
-﻿using LogViewer.Solr;
+﻿using LogViewer.Configurations;
+using LogViewer.Solr;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,17 +21,10 @@ namespace LogViewer
 
         private void AcceptCOnfigurationButton_Click(object sender, EventArgs e)
         {
-            if (checkBoxAcceptWarns.Checked)
-                SolrConfigurations.Warns = true;
-
-            if(checkBoxIncludeErrors.Checked)
-                SolrConfigurations.Errors = true;
-
-            if (checkBoxIncludeSentence1.Checked)
-                SolrConfigurations.Sentence1 = IncludeText.Text;
-
-            if (checkBoxIncludeSentence2.Checked)
-                SolrConfigurations.Sentence2 = Include_2Text.Text;
+            SolrConfigurations.Warns = checkBoxAcceptWarns.Checked;
+            SolrConfigurations.Errors = checkBoxIncludeErrors.Checked;
+            SolrConfigurations.Sentence1 = IncludeText.Text;
+            SolrConfigurations.Sentence2 = Include_2Text.Text;
 
             this.Close();
         }

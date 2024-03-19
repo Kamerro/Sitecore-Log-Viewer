@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogViewer.Unicorn;
 using LogViewer.Sql;
+using LogViewer.Views.OtherLogs;
+using LogViewer.Configurations;
+
 namespace LogViewer
 {
     public partial class LogView : Form
@@ -58,7 +61,25 @@ namespace LogViewer
 
         private void OtherLogButton_Click(object sender, EventArgs e)
         {
-            Placeholder.ListOfOtherLogs.ForEach(x => { logViewBox.AppendText(x.ToString() + "\r\n"); });
+            logViewBox.Clear();
+            OtherView otherView = new OtherView();
+            otherView.ShowDialog();
+
+            if (OtherLogsConfigurations.Warns)
+                Placeholder.ListOfOtherLogs.Where(
+                    x => x.Contains(OtherLogsConfigurations.Sentence1)
+                    && x.Contains(OtherLogsConfigurations.Sentence2)
+                    && x.ToLower().Contains("warn"))
+                    .ToList()
+                    .ForEach(x => logViewBox.AppendText(x.ToString() + "\r\n"));
+
+            if (OtherLogsConfigurations.Errors)
+                Placeholder.ListOfOtherLogs.Where(
+                  x => x.Contains(OtherLogsConfigurations.Sentence1)
+               && x.Contains(OtherLogsConfigurations.Sentence2)
+                    && x.ToLower().Contains("error"))
+                  .ToList()
+                  .ForEach(x => logViewBox.AppendText(x.ToString() + "\r\n"));
         }
 
         private void SolrLogButton_Click(object sender, EventArgs e)
@@ -66,7 +87,6 @@ namespace LogViewer
             logViewBox.Clear();
             solrConfig solrConfig = new solrConfig();
             solrConfig.ShowDialog();
-            List<string> kurwenmahen = new List<string>();
 
             if (SolrConfigurations.Warns)
                 Placeholder.ListWarningsSolr.Where(

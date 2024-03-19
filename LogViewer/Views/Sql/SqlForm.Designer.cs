@@ -30,11 +30,11 @@
         {
             this.Include_2Text = new System.Windows.Forms.TextBox();
             this.IncludeText = new System.Windows.Forms.TextBox();
-            this.checkBoxIncludeSentence2 = new System.Windows.Forms.CheckBox();
-            this.checkBoxIncludeSentence1 = new System.Windows.Forms.CheckBox();
             this.checkBoxIncludeErrors = new System.Windows.Forms.CheckBox();
             this.checkBoxAcceptWarns = new System.Windows.Forms.CheckBox();
             this.AcceptCOnfigurationButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Include_2Text
@@ -50,28 +50,6 @@
             this.IncludeText.Name = "IncludeText";
             this.IncludeText.Size = new System.Drawing.Size(165, 22);
             this.IncludeText.TabIndex = 12;
-            // 
-            // checkBoxIncludeSentence2
-            // 
-            this.checkBoxIncludeSentence2.AutoSize = true;
-            this.checkBoxIncludeSentence2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxIncludeSentence2.Location = new System.Drawing.Point(55, 116);
-            this.checkBoxIncludeSentence2.Name = "checkBoxIncludeSentence2";
-            this.checkBoxIncludeSentence2.Size = new System.Drawing.Size(89, 24);
-            this.checkBoxIncludeSentence2.TabIndex = 11;
-            this.checkBoxIncludeSentence2.Text = "Include:";
-            this.checkBoxIncludeSentence2.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxIncludeSentence1
-            // 
-            this.checkBoxIncludeSentence1.AutoSize = true;
-            this.checkBoxIncludeSentence1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkBoxIncludeSentence1.Location = new System.Drawing.Point(55, 91);
-            this.checkBoxIncludeSentence1.Name = "checkBoxIncludeSentence1";
-            this.checkBoxIncludeSentence1.Size = new System.Drawing.Size(89, 24);
-            this.checkBoxIncludeSentence1.TabIndex = 10;
-            this.checkBoxIncludeSentence1.Text = "Include:";
-            this.checkBoxIncludeSentence1.UseVisualStyleBackColor = true;
             // 
             // checkBoxIncludeErrors
             // 
@@ -107,16 +85,36 @@
             this.AcceptCOnfigurationButton.UseVisualStyleBackColor = false;
             this.AcceptCOnfigurationButton.Click += new System.EventHandler(this.AcceptCOnfigurationButton_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(77, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 20);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Include:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(77, 91);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 20);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Include:";
+            // 
             // SqlForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(335, 325);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Include_2Text);
             this.Controls.Add(this.IncludeText);
-            this.Controls.Add(this.checkBoxIncludeSentence2);
-            this.Controls.Add(this.checkBoxIncludeSentence1);
             this.Controls.Add(this.checkBoxIncludeErrors);
             this.Controls.Add(this.checkBoxAcceptWarns);
             this.Controls.Add(this.AcceptCOnfigurationButton);
@@ -132,10 +130,10 @@
 
         private System.Windows.Forms.TextBox Include_2Text;
         private System.Windows.Forms.TextBox IncludeText;
-        private System.Windows.Forms.CheckBox checkBoxIncludeSentence2;
-        private System.Windows.Forms.CheckBox checkBoxIncludeSentence1;
         private System.Windows.Forms.CheckBox checkBoxIncludeErrors;
         private System.Windows.Forms.CheckBox checkBoxAcceptWarns;
         private System.Windows.Forms.Button AcceptCOnfigurationButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

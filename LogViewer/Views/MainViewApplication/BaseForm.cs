@@ -31,12 +31,13 @@ namespace LogViewer
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = ConstantValues.InternalConfiguration.LocalLogFolderLocalization;
             openFileDialog.Filter = ConstantValues.InternalConfiguration.LogFilterType;
+            LogService logSplitter = new LogService();
+
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 filePath = openFileDialog.FileName;
                 var openFile = openFileDialog.OpenFile();
                 string fileContent;
-                LogService logSplitter = new LogService();
                 using (StreamReader reader = new StreamReader(openFile))
                 {
                     fileContent = reader.ReadToEnd();
@@ -44,6 +45,7 @@ namespace LogViewer
 
                 GenerateListsOfLogs(fileContent, logSplitter);
             }
+            LogViewerBox.AppendText($"Solr error number: {logSplitter.NumberOfSqlErrors}");
             OpenConfigWindowEvent.Invoke(ConstantValues.ConfigureWindowParameters);
 
         }

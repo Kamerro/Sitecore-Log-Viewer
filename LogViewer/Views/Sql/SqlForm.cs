@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogViewer.Sql;
+using LogViewer.Configurations;
 
 namespace LogViewer.Unicorn
 {
@@ -21,18 +22,10 @@ namespace LogViewer.Unicorn
 
         private void AcceptCOnfigurationButton_Click(object sender, EventArgs e)
         {
-            if (checkBoxAcceptWarns.Checked)
-                SqlConfigurations.Warns = true;
-
-            if (checkBoxIncludeErrors.Checked)
-                SqlConfigurations.Errors = true;
-
-            if (checkBoxIncludeSentence1.Checked)
-                SqlConfigurations.Sentence1 = IncludeText.Text;
-
-            if (checkBoxIncludeSentence2.Checked)
-                SqlConfigurations.Sentence2 = Include_2Text.Text;
-
+            SqlConfigurations.Warns = checkBoxAcceptWarns.Checked;
+            SqlConfigurations.Errors = checkBoxIncludeErrors.Checked;
+            SqlConfigurations.Sentence1 = IncludeText.Text;
+            SqlConfigurations.Sentence2 = Include_2Text.Text;
             this.Close();
         }
     }

@@ -21,18 +21,11 @@ namespace LogViewer.Views.OtherLogs
 
         private void AcceptCOnfigurationButton_Click(object sender, EventArgs e)
         {
-            if (checkBoxAcceptWarns.Checked)
-                OtherLogsConfigurations.Warns = true;
 
-            if (checkBoxIncludeErrors.Checked)
-                OtherLogsConfigurations.Errors = true;
-
-            if (checkBoxIncludeSentence1.Checked)
-                OtherLogsConfigurations.Sentence1 = IncludeText.Text;
-
-            if (checkBoxIncludeSentence2.Checked)
-                OtherLogsConfigurations.Sentence2 = Include_2Text.Text;
-
+            OtherLogsConfigurations.Warns = checkBoxAcceptWarns.Checked;
+            OtherLogsConfigurations.Errors = checkBoxIncludeErrors.Checked;
+            OtherLogsConfigurations.Sentence1 = IncludeText.Text;
+            OtherLogsConfigurations.Sentence2 = Include_2Text.Text;
             this.Close();
         }
     }
