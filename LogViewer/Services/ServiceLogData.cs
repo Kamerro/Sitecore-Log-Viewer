@@ -13,7 +13,7 @@ namespace LogViewer
             List<string> listWarnUnicorn = logSplitter.SaveOnlySpecialType(new string[] { "warn", "unicorn" }, list);
 
             List<string> listWarningsSolr = logSplitter.SaveOnlySpecialType(new string[] { "warn", "solr" }, list);
-            List<string> listOfOtherWarns = logSplitter.WithExcluding(new string[] { "sql", "solr", "error", "unicorn" }, list);
+            List<string> listOfOtherLogs = logSplitter.WithExcluding(new string[] { "sql", "solr", "unicorn" }, list);
             List<string> listErrorsSQL = logSplitter.SaveOnlySpecialType(new string[] { "sql", "error" }, list);
             List<string> listWarnsSQL = logSplitter.SaveOnlySpecialType(new string[] { "sql", "warn" }, list);
 
@@ -22,7 +22,7 @@ namespace LogViewer
             Placeholder.ListErrorsUnicorn = listErrorUnicorn;
             Placeholder.ListWarningsUnicorn = listWarnUnicorn;
             Placeholder.ListWarningsSolr = listWarningsSolr;
-            Placeholder.ListOfOtherWarns = listOfOtherWarns;
+            Placeholder.ListOfOtherLogs = listOfOtherLogs;
             Placeholder.ListErrorsSql = listErrorsSQL;
             Placeholder.ListWarningsSql = listWarnsSQL;
         }

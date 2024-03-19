@@ -58,7 +58,7 @@ namespace LogViewer
 
         private void OtherLogButton_Click(object sender, EventArgs e)
         {
-            Placeholder.ListOfOtherWarns.ForEach(x => { logViewBox.AppendText(x.ToString() + "\r\n"); });
+            Placeholder.ListOfOtherLogs.ForEach(x => { logViewBox.AppendText(x.ToString() + "\r\n"); });
         }
 
         private void SolrLogButton_Click(object sender, EventArgs e)

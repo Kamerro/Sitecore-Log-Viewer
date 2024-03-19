@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\ConfigurationManager.cs" />
+    <Compile Include="Configurations\OtherLogsConfigurations.cs" />
     <Compile Include="Consts\ConstantValues.cs" />
     <Compile Include="Views\MainViewApplication\BaseForm.cs">
       <SubType>Form</SubType>
@@ -70,6 +71,12 @@
     <Compile Include="Services\LogService.cs" />
     <Compile Include="Services\ServiceLogData.cs" />
     <Compile Include="Services\ServiceWindowsMaker.cs" />
+    <Compile Include="Views\OtherLogs\OtherView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\OtherLogs\OtherView.Designer.cs">
+      <DependentUpon>OtherView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Solr\solrConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +115,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\OtherLogs\OtherView.resx">
+      <DependentUpon>OtherView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Solr\solrConfig.resx">
       <DependentUpon>solrConfig.cs</DependentUpon>
     </EmbeddedResource>
