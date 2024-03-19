@@ -9,7 +9,7 @@ namespace LogViewer
         static internal List<string> ListErrorsUnicorn;
         static internal List<string> ListWarningsUnicorn;
         static internal List<string> ListWarningsSolr;
-        static internal List<string> ListOfOtherWarns;
+        static internal List<string> ListOfOtherLogs;
         static internal List<string> ListErrorsSql;
         static internal List<string> ListWarningsSql;
 
