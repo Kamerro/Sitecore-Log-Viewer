@@ -45,15 +45,12 @@ namespace LogViewer
 
                 GenerateListsOfLogs(fileContent, logSplitter);
             }
-            LogViewerBox.AppendText($"Solr error number: {logSplitter.NumberOfSqlErrors}");
             OpenConfigWindowEvent.Invoke(ConstantValues.ConfigureWindowParameters);
 
         }
 
         private void GenerateListsOfLogs(string fileContent, LogService logSplitter)
         {
-            //ChangeStateAndWindowHandler.Invoke(fileContent,ConstantValues.StateMachine.TheStateOfTheSoftware.LoadedFile);
-
             List<string> list = logSplitter.SplitLogIntoPieces(fileContent);
             ServiceLogData.GenerateSeparatedLists(list,logSplitter);
 

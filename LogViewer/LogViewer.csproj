@@ -77,6 +77,7 @@
     <Compile Include="Views\OtherLogs\OtherView.Designer.cs">
       <DependentUpon>OtherView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\OtherLogs\ServiceSetterConfiguration.cs" />
     <Compile Include="Views\Solr\solrConfig.cs">
       <SubType>Form</SubType>
     </Compile>
