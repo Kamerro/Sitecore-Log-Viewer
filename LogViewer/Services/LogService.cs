@@ -16,6 +16,7 @@ namespace LogViewer
         public int NumberOfInfos;
         public int NumberOfDIWarnings;
         public int NumberOfMixedErrors;
+        public int NumberOfSqlErrors;
 
         public void CheckParametersOfTheProvidedLog(string fileContent)
         {
@@ -31,6 +32,7 @@ namespace LogViewer
             NumberOfMixedErrors = splitedContent.Count(x => x.ToLower().Contains("warn") && x.ToLower().Contains("error"));
             NumberOfMixedErrors += splitedContent.Count(x => x.ToLower().Contains("info") && x.ToLower().Contains("error"));
             NumberOfMixedErrors += splitedContent.Count(x => x.ToLower().Contains("info") && x.ToLower().Contains("warn"));
+            NumberOfSqlErrors += splitedContent.Count(x => x.ToLower().Contains("error") && x.ToLower().Contains("warn"));
         }
         public void CheckParametersOfTheProvidedLog(string[] splitedContent)
         {
