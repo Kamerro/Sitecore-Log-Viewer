@@ -57,6 +57,25 @@ namespace LogViewer
 
         public List<string> SaveOnlySpecialType(string[] strings, List<string> listOfLogs)
         {
+            List<string> listOfSpecialStrings = null;
+            if (strings.Contains("warn") || strings.Contains("error"))
+            {
+                listOfSpecialStrings = new List<string>();
+                for (int i = 0; i < listOfLogs.Count; i++)
+                {
+
+                    string hardlog = listOfLogs[i].Substring(0, listOfLogs[i].IndexOf("\r\n"));
+                    string lowerLog = hardlog.ToLower();
+                    if (lowerLog.Contains(strings[0]))
+                        listOfSpecialStrings.Add(listOfLogs[i]);
+                    
+                }
+                strings[0] = String.Empty;
+            }
+            if (listOfSpecialStrings != null)
+                return listOfSpecialStrings.Where(x => strings.All(str => x.ToLower().Contains(str.ToLower()))).ToList();
+
+
             return listOfLogs.Where(x => strings.All(str => x.ToLower().Contains(str.ToLower()))).ToList();
         }
 
@@ -75,6 +94,8 @@ namespace LogViewer
                 else
                 {
                     sb.AppendLine(str);
+                    if(!sb.ToString().Contains("\r\n"))
+                        sb.AppendLine("\r\n");
                 }
             }
             listOfLogs.Add(sb.ToString());
