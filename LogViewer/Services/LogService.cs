@@ -63,10 +63,9 @@ namespace LogViewer
                 listOfSpecialStrings = new List<string>();
                 for (int i = 0; i < listOfLogs.Count; i++)
                 {
-
                     string hardlog = listOfLogs[i].Substring(0, listOfLogs[i].IndexOf("\r\n"));
-                    string lowerLog = hardlog.ToLower();
-                    if (lowerLog.Contains(strings[0]))
+               
+                    if (hardlog.Contains(strings[0].ToUpper()))
                         listOfSpecialStrings.Add(listOfLogs[i]);
                     
                 }

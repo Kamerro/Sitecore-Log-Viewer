@@ -19,9 +19,9 @@ namespace LogViewer
 
             List<string> listOfOtherLogs = logSplitter.WithExcluding(new string[] { "sql", "solr", "unicorn" }, list);
 
-            List<string> listErrorsSQL = logSplitter.SaveOnlySpecialType(new string[] { "sql", "error" }, list);
+            List<string> listErrorsSQL = logSplitter.SaveOnlySpecialType(new string[] { "error", "sql" }, list);
 
-            List<string> listWarnsSQL = logSplitter.SaveOnlySpecialType(new string[] { "sql", "warn" }, list);
+            List<string> listWarnsSQL = logSplitter.SaveOnlySpecialType(new string[] { "warn", "sql" }, list);
 
             Placeholder.List = list;
             Placeholder.ListErrorsSolr = listErrorSolr;
