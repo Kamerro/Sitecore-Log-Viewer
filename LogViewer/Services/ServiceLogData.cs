@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LogViewer
 {
@@ -30,6 +31,33 @@ namespace LogViewer
             Placeholder.ListOfOtherLogs = listOfOtherLogs;
             Placeholder.ListErrorsSql = listErrorsSQL;
             Placeholder.ListWarningsSql = listWarnsSQL;
+
+
+
+
+            ////IM NOT PROUD OF THIS BUT THIS HELPED OUT TO FIND THE UNMATCHED LOGS !!!!!!!!!!!!!!!!
+            // var listerinexD = ReturnDifferenceInLists();
         }
+
+        ////IM NOT PROUD OF THIS BUT THIS HELPED OUT TO FIND THE UNMATCHED LOGS !!!!!!!!!!!!!!!!!!!!!!
+        ///
+        //private static List<string> returnMergedLists()
+        //{
+        //    return new List<string>().Concat(
+        //        Placeholder.ListErrorsSolr.Concat(
+        //            Placeholder.ListErrorsUnicorn.Concat(
+        //                Placeholder.ListWarningsUnicorn.Concat(
+        //                    Placeholder.ListWarningsSolr.Concat(
+        //                        Placeholder.ListOfOtherLogs.Concat(
+        //                            Placeholder.ListErrorsSql.Concat(
+        //                                Placeholder.ListWarningsSql))))))).ToList();
+        //}
+
+        //public static List<string> ReturnDifferenceInLists()
+        //{
+        //    var list = returnMergedLists();
+        //    return Placeholder.List.Where(x => !list.Contains(x)).ToList();
+        //}
+
     }
 }

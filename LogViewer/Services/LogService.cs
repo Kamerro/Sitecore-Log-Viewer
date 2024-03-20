@@ -85,7 +85,7 @@ namespace LogViewer
             List<string> listOfLogs = new List<string>();
             foreach (string str in splitedContent)
             {
-                if ((str.Length >= 3 && int.TryParse(str.Substring(0, 2), out int s) || str.IndexOf("ManagedPoolThread") == 0) && !String.IsNullOrEmpty(sb.ToString()))
+                if ((str.Length >= 3 && int.TryParse(str.Substring(0, 2), out int s) || str.IndexOf("ManagedPoolThread") == 0  || str.IndexOf("Rebus") == 0) && !String.IsNullOrEmpty(sb.ToString()))
                 {
                     listOfLogs.Add(sb.ToString());
                     sb.Clear();
@@ -107,7 +107,7 @@ namespace LogViewer
             return listOfLogs?.Where(
                  str => ((str.Contains("ERROR"))
                  || (str.Contains("WARN") && !str.Contains("ManagedPoolThread"))
-                 //|| str.Contains("INFO") && !str.Contains("ManagedPoolThread"))
+               //  || str.Contains("INFO")) && !str.Contains("ManagedPoolThread"))
                  )).ToList();
         }
 
