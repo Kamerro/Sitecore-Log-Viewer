@@ -49,7 +49,12 @@
     <Compile Include="Configurations\ConfigurationManager.cs" />
     <Compile Include="Configurations\OtherLogsConfigurations.cs" />
     <Compile Include="Consts\ConstantValues.cs" />
-    <Compile Include="Services\IInfoLogs.cs" />
+    <Compile Include="Interfaces\IExcluderOfLogs.cs" />
+    <Compile Include="Interfaces\IHeadLogsChecker.cs" />
+    <Compile Include="Interfaces\IInfoLogs.cs" />
+    <Compile Include="Interfaces\IListMaker.cs" />
+    <Compile Include="Interfaces\ISaveSpecialLogs.cs" />
+    <Compile Include="Interfaces\ISplitterOfLog.cs" />
     <Compile Include="Services\InfoLogs.cs" />
     <Compile Include="Views\MainViewApplication\BaseForm.cs">
       <SubType>Form</SubType>
@@ -57,7 +62,6 @@
     <Compile Include="Views\MainViewApplication\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IConfugurationManager.cs" />
     <Compile Include="Interfaces\IInternalXMLFileReader.cs" />
     <Compile Include="Interfaces\IInternalListValidator.cs" />
     <Compile Include="Views\LogViewWindow\LogView.cs">

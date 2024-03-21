@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Lifetime;
 using System.Text;
-
+using LogViewer.Interfaces;
 namespace LogViewer
 {
-    public class LogService:InfoLogs
+    public class LogService:InfoLogs,ISplitterOfLog,ISaveSpecialLogs,IHeadLogsChecker,IListMaker,IExcluderOfLogs
     {
         public List<string> SplitLogIntoPieces(string fileContent)
         {
@@ -31,17 +31,19 @@ namespace LogViewer
             return listOfLogs.Where(x => strings.All(str => x.ToLower().Contains(str.ToLower()))).ToList();
         }
 
-        private List<string> CheckHeaderOfLog(string typeOfLog, List<string> listOfLogs)
+        public List<string> CheckHeaderOfLog(string typeOfLog, List<string> listOfLogs)
         {
             return listOfLogs.Where(x => x.Substring(0, x.IndexOf("\r\n")).Contains(typeOfLog.ToUpper())).ToList();
         }
 
-        private List<string> MakeListOfLogs(string[] splitedContent)
+        public List<string> MakeListOfLogs(string[] splitedContent)
         {
+           
             StringBuilder sb = new StringBuilder();
             List<string> listOfLogs = new List<string>();
             foreach (string str in splitedContent)
             {
+                //Should be written constants where the parameters should be defined, also this should be wrapped into service, the simplification will be great (readability probably will be worse but easier to maintain.)
                 if ((str.Length >= 3 && int.TryParse(str.Substring(0, 2), out int s) || str.IndexOf("ManagedPoolThread") == 0 || str.IndexOf("Rebus") == 0) && !String.IsNullOrEmpty(sb.ToString()))
                 {
                     listOfLogs.Add(sb.ToString());
@@ -59,8 +61,10 @@ namespace LogViewer
             return listOfLogs;
         }
 
-        private List<string> ExcludeNotUsefullLogs(List<string> listOfLogs)
+        public List<string> ExcludeNotUsefullLogs(List<string> listOfLogs)
         {
+            //instead of magic strings there would be constants, for every constant log list should be extended!
+            //to consider while work.
             return listOfLogs?.Where(
                  str => ((str.Contains("ERROR"))
                  || (str.Contains("WARN") && !str.Contains("ManagedPoolThread"))
@@ -68,27 +72,8 @@ namespace LogViewer
                  )).ToList();
         }
 
-        private void FilterLinesWithExclude(string[] splitedContent, string exclude)
-        {
-            bool ExcldudeLine = false;
-            int i = 0;
-            foreach (string str in splitedContent)
-            {
-
-                if (str.StartsWith(exclude))
-                    ExcldudeLine = true;
-
-                else if (String.IsNullOrEmpty(str.Trim()) || str.Equals("\t"))
-                    ExcldudeLine = false;
-
-                if (ExcldudeLine)
-                    splitedContent[i] = "";
-
-                i++;
-            }
-        }
-
-        internal List<string> WithExcluding(string[] strings, List<string> list)
+   
+        public List<string> WithExcluding(string[] strings, List<string> list)
         {
             return list.Where(x => strings.All(str => !x.ToLower().Contains(str.ToLower()))).ToList();
         }

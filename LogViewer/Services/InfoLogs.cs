@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System;
-
+using LogViewer.Interfaces;
 namespace LogViewer
 {
     public class InfoLogs : IInfoLogs

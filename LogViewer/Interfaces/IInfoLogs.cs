@@ -1,4 +1,5 @@
-﻿namespace LogViewer
+﻿namespace LogViewer.Interfaces
+
 {
     public interface IInfoLogs
     {
