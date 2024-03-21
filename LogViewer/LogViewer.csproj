@@ -49,6 +49,8 @@
     <Compile Include="Configurations\ConfigurationManager.cs" />
     <Compile Include="Configurations\OtherLogsConfigurations.cs" />
     <Compile Include="Consts\ConstantValues.cs" />
+    <Compile Include="Services\IInfoLogs.cs" />
+    <Compile Include="Services\InfoLogs.cs" />
     <Compile Include="Views\MainViewApplication\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
